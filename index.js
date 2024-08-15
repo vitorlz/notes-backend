@@ -10,9 +10,9 @@ app.use(express.static('dist'))
 app.use(express.json())
 
 app.get('/api/notes', (request, response) => {
-    Note.find({}).then(notes =>{
-      response.json(notes)
-    })
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
 })
 
 app.get('/api/notes/:id', (request, response, next) => {
@@ -29,7 +29,7 @@ app.get('/api/notes/:id', (request, response, next) => {
 
 app.delete('/api/notes/:id', (request, response, next) => {
   Note.findByIdAndDelete(request.params.id)
-    .then(result => {
+    .then(() => {
       response.status(204).end()
     })
     .catch(error => next(error))
@@ -52,10 +52,9 @@ app.post('/api/notes', (request, response, next) => {
 
 app.put('/api/notes/:id', (request, response, next) => {
   const { content, important } = request.body
-  
   Note.findByIdAndUpdate(
-    request.params.id, 
-    { content, important }, 
+    request.params.id,
+    { content, important },
     { new: true, runValidators: true, context: 'query' }
   )
     .then(updatedNote => {
@@ -80,12 +79,12 @@ const errorHandler = (error, request, response, next) => {
   }
 
   next(error)
-  
+
 }
 
 app.use(errorHandler)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })
