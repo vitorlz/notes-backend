@@ -1,7 +1,8 @@
 POST http://localhost:3001/api/notes
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZpdG9ybHoxIiwiaWQiOiI2NmNjMDUwMjFlN2FjNjQ1YzczNjRhNGEiLCJpYXQiOjE3MjQ2NDgwNjl9.7GvD0AHtB08rr9JkVomC1Tc24kXK8yo8eZ88y5rUOOY
 
 {
-    "content": "Postman is good in testing backend",
+    "content": "Token based auth is cool",
     "important": true
 }
